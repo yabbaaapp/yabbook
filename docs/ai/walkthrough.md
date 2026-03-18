@@ -1,31 +1,27 @@
-# Yabbook → Social-Comm-Next Migration Walkthrough
+# Yabbok Web Redesign Walkthrough
 
-This document outlines the features that were ported from the React Native `yabbook` application into the Next.js `social-comm-next` web application.
+Telegram stilini yansıtan kapsamlı arayüz güncellemeleri tamamlandı! 🚀
 
-## 🚀 Phase 1: Auth & Wallet (Completed)
-- **Supabase Authentication**: Built the Login/Register screen using Tailwind CSS.
-- **Wallet functionality**: 
-  - Token Receive, Token Send, and QR Pay screens ported to web.
+## Yapılan Değişiklikler
 
-## 💬 Phase 2: Chat & Profile (Completed)
-- **Chat List (Anasayfa)**: 
-  - Anasayfadaki (`/`) eski statik sohbet listesi kaldırıldı.
-  - Supabase `chats` tablosuna bağlanarak gerçek zamanlı sohbet listesi oluşturuldu.
-  - "Yeni Sohbet Oluştur" butonu entegre edildi.
-- **Chat Odası (`/chat/[id]`)**:
-  - Supabase `messages` tablosu `channel` özelliği ile dinlenerek anlık (real-time) mesajlaşma altyapısı kuruldu.
-  - Orijinal tasarımdaki mesaj baloncukları ve timestamp göstergeleri Tailwind CSS ile port edildi.
-- **Kullanıcı Profili (`/profile`)**:
-  - `users` tablosundan avatar, isim ve kullanıcı adı (username) çekilerek gösterildi.
-  - Oturum Kapatma (Sign Out) eylemi Yabbook'a benzer şekilde eklendi.
+### 1. Telegram Stil Yan Menü (Sidebar Drawer)
+- Ana sayfada sol üstteki hamburger menü ikonuna basıldığında açılan profesyonel bir yan panel eklendi.
+- Panelde profil özeti, telefon numarası ve "Cüzdan", "Ayarlar", "Kaydedilenler" gibi kısayollar yer alıyor.
 
-## Validation Results
-- Verified that all pages are successfully built by Next.js.
-- Confirmed the Supabase real-time subscriptions are active.
-- Confirmed the dev server is active and hot module reloading works as expected.
+### 2. Detaylı Profil Sayfası
+- Profili Telegram'daki kişi detay sayfasıyla aynı yapıya getirdik.
+- Üstte büyük profil resmi, "online" durumu ve altında "Bilgi" (Info) bölümü yer alıyor.
+- Gönderiler (Posts) için tab yapısı ve boş durum placeholder'ları eklendi.
 
-## Next Steps for User
-Lütfen aşağıdaki bağlantıları kullanarak web'deki yeni özellikleri test ediniz:
-- **Sohbet Listesi:** Tarayıcıdan anasayfaya (`http://localhost:3000/`) gidiniz.
-- **Sohbet Odası:** Anasayfada yer alan herhangi bir sohbete tıkladığınızda otomatik olarak `http://localhost:3000/chat/123` tarzı ilgili odaya yönlendirileceksiniz. Oradan mesaj göndermeyi test edebilirsiniz.
-- **Profil Sayfası:** `http://localhost:3000/profile` konumundan profil ve hesap çıkış (Log Out) özelliklerini deneyebilirsiniz.
+### 3. Liste Tabanlı Cüzdan Ayarları
+- Wallet sayfası görsellerdeki gibi liste öğelerinden oluşan şık bir yapıya büründü.
+- "Passcode & Fingerprint", "Identification Level" ve "Support" bölümleri tüm ikon ve statüleriyle (`Basic`, `On` vb.) uygulandı.
+
+## Test Adımları
+1. **Yan Menü:** Ana sayfadaki menü butonuna basın ve panelin açıldığını görün.
+2. **Profil:** Yan menüden veya alt bardan Profile gidin, yeni "Info" kartlarını ve tab yapısını kontrol edin.
+3. **Cüzdan:** Alt bardaki cüzdan ikonuna basarak yeni liste görünümünü inceleyin.
+
+## Teknik Detaylar
+- Tüm ikonlar `lucide-react` ve `FontAwesome` kullanılarak Telegram'dakine en yakın şekilde seçildi.
+- Renk paleti Telegram'ın koyu modundaki (`#17212B`, `#0B0F19`) tonlara sabitlendi.
