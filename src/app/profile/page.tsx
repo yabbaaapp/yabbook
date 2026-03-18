@@ -54,77 +54,100 @@ export default function ProfileScreen() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-white flex flex-col items-center">
+    <div className="min-h-screen bg-[#0B0F19] text-[#F8FAFC] flex flex-col">
       {/* Header */}
-      <div className="w-full flex items-center px-5 py-5">
-        <h1 className="text-[22px] font-bold text-[#F8FAFC]">Profil</h1>
-      </div>
+      <header className="px-4 pt-10 pb-4 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/80 backdrop-blur-md">
+        <button onClick={() => router.back()} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors">
+          <ChevronRight className="w-6 h-6 rotate-180" />
+        </button>
+        <div className="flex gap-2">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors">
+            <i className="fa-solid fa-pencil text-sm text-slate-300"></i>
+          </button>
+          <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors">
+            <i className="fa-solid fa-ellipsis-vertical text-lg text-slate-300"></i>
+          </button>
+        </div>
+      </header>
 
-      <div className="w-full max-w-md px-5 flex flex-col pb-20">
+      {/* Profile Content */}
+      <div className="flex-1 overflow-y-auto no-scrollbar pt-24 pb-10 px-4">
         {loading ? (
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-20">
             <div className="w-8 h-8 border-4 border-[#38BDF8]/30 border-t-[#38BDF8] rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="flex flex-col items-center mt-2 mb-7">
-            <div className="w-24 h-24 rounded-full border-[3px] border-[#6366F1] p-1 mb-4 flex items-center justify-center">
-              <Image 
-                src={profile?.avatar_url || 'https://i.pravatar.cc/150?u=default'} 
-                alt="Profile Avatar" 
-                width={88} 
-                height={88} 
-                className="rounded-full w-full h-full object-cover"
-                unoptimized
-              />
-            </div>
-            <h2 className="text-2xl font-bold text-white mb-1">{profile?.name || 'Kullanıcı'}</h2>
-            <p className="text-[13px] font-medium text-[#38BDF8] mb-2.5">
-              {profile?.username || '@kullanici'}
-            </p>
-            <p className="text-[13px] text-[#94A3B8] text-center max-w-[280px]">
-              Yabbok Web kullanıcısı. Kripto işlemlerine ve sohbetlere hazır.
-            </p>
-          </div>
-        )}
-
-        {/* Stats */}
-        <div className="flex justify-center gap-9 mb-7 pb-7 border-b border-[#1E293B]/50">
-          {[
-            { value: '1.2k', label: 'Takipçi' }, 
-            { value: '845', label: 'Takip' }, 
-            { value: '14', label: 'Odalar' }
-          ].map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center">
-              <span className="text-xl font-bold text-white mb-0.5">{stat.value}</span>
-              <span className="text-[11px] text-[#64748B]">{stat.label}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Menu */}
-        <div className="flex flex-col gap-2">
-          {menuItems.map((item) => (
-            <button 
-              key={item.name} 
-              className="flex items-center justify-between p-4 bg-[#1E293B]/20 hover:bg-[#1E293B]/40 transition-colors rounded-2xl"
-            >
-              <div className="flex items-center gap-3.5">
-                <item.icon className="w-[18px] h-[18px] text-[#CBD5E1]" />
-                <span className="font-medium text-[15px] text-[#CBD5E1]">{item.name}</span>
+          <>
+            {/* Avatar & Basic Info */}
+            <div className="flex flex-col items-center mb-8">
+              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 shadow-2xl relative">
+                <Image 
+                  src={profile?.avatar_url || 'https://i.pravatar.cc/150?u=myprofile'} 
+                  alt="Avatar" 
+                  width={112} 
+                  height={112} 
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
               </div>
-              <ChevronRight className="w-4 h-4 text-[#475569]" />
-            </button>
-          ))}
-        </div>
+              <h2 className="text-xl font-bold mb-1 uppercase tracking-wider">{profile?.name || 'YABBAA YABBOOK'}</h2>
+              <span className="text-[13px] text-slate-400 font-medium">online</span>
+            </div>
 
-        <button 
-          onClick={handleSignOut}
-          className="flex items-center gap-3.5 p-4 bg-[#F43F5E]/10 hover:bg-[#F43F5E]/20 transition-colors rounded-2xl mt-4 mb-10"
-        >
-          <LogOut className="w-[18px] h-[18px] text-[#F43F5E]" />
-          <span className="font-medium text-[15px] text-[#F43F5E]">Çıkış Yap</span>
-        </button>
+            {/* Info Section */}
+            <div className="bg-[#17212B] rounded-2xl overflow-hidden mb-6 border border-white/5 shadow-lg">
+              <div className="px-5 py-3.5 border-b border-white/5">
+                <h3 className="text-[13.5px] font-bold text-[#38BDF8] uppercase tracking-widest">Bilgi</h3>
+              </div>
+              
+              <div className="flex flex-col">
+                <InfoItem 
+                  label="+90 (505) 973 90 41" 
+                  subLabel="Mobil" 
+                />
+                <div className="h-[1px] bg-white/5 mx-5" />
+                <InfoItem 
+                  label={profile?.username || '@YabbaaToken'} 
+                  subLabel="Kullanıcı adı" 
+                  icon={<i className="fa-solid fa-qrcode text-slate-400 text-lg"></i>}
+                />
+              </div>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex border-b border-white/5 mb-6">
+              <button className="flex-1 py-3.5 text-sm font-bold text-[#38BDF8] border-b-2 border-[#38BDF8]">
+                Gönderiler
+              </button>
+              <button className="flex-1 py-3.5 text-sm font-bold text-slate-400 hover:text-slate-200 transition-colors">
+                Arşivlenmiş
+              </button>
+            </div>
+
+            {/* Posts Placeholder */}
+            <div className="flex flex-col items-center justify-center py-10">
+              <p className="text-[#94A3B8] text-[15px] font-medium mb-6">Henüz gönderi yok...</p>
+              
+              <button className="w-full max-w-[280px] bg-[#38BDF8] hover:bg-[#0EA5E9] text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2.5 transition-all active:scale-95 shadow-lg shadow-sky-500/20">
+                <i className="fa-solid fa-camera-retro text-lg"></i>
+                Bir gönderi ekle
+              </button>
+            </div>
+          </>
+        )}
       </div>
+    </div>
+  );
+}
+
+function InfoItem({ label, subLabel, icon }: { label: string, subLabel: string, icon?: React.ReactNode }) {
+  return (
+    <div className="flex items-center justify-between px-5 py-4 hover:bg-white/5 transition-colors cursor-pointer">
+      <div className="flex flex-col">
+        <span className="text-[15.5px] font-medium text-white">{label}</span>
+        <span className="text-xs text-[#94A3B8] mt-0.5">{subLabel}</span>
+      </div>
+      {icon && <div>{icon}</div>}
     </div>
   );
 }

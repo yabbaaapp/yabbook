@@ -5,23 +5,25 @@ interface HeaderProps {
   showSearch?: boolean;
   showAdd?: boolean;
   onAddPress?: () => void;
+  onMenuPress?: () => void;
 }
 
-export default function Header({ title = 'Chats', showSearch = true, showAdd = true, onAddPress }: HeaderProps) {
+export default function Header({ 
+  title = 'Chats', 
+  showSearch = true, 
+  showAdd = true, 
+  onAddPress,
+  onMenuPress 
+}: HeaderProps) {
   return (
-    <header className="px-6 pt-12 pb-4 flex justify-between items-center bg-[#0B0F19]/90 backdrop-blur-md sticky top-0 z-50 border-b border-white/5">
-      <div className="flex items-center gap-3">
-        <div className="relative">
-          <Image 
-            src="https://i.pravatar.cc/150?u=myprofile" 
-            alt="Profile" 
-            width={40}
-            height={40}
-            className="w-10 h-10 rounded-full object-cover border-2 border-[#1E293B]"
-            unoptimized
-          />
-          <div className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-[#0B0F19] rounded-full"></div>
-        </div>
+    <header className="px-5 pt-12 pb-4 flex justify-between items-center bg-[#0B0F19]/90 backdrop-blur-md sticky top-0 z-50 border-b border-white/5">
+      <div className="flex items-center gap-4">
+        <button 
+          onClick={onMenuPress}
+          className="w-10 h-10 flex items-center justify-center text-slate-300 hover:text-white transition-colors ml-[-8px]"
+        >
+          <i className="fa-solid fa-bars text-xl"></i>
+        </button>
         <h1 className="text-xl font-bold tracking-tight text-[#F8FAFC]">{title}</h1>
       </div>
       <div className="flex items-center gap-3 text-slate-300">

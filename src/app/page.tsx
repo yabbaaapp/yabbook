@@ -5,12 +5,19 @@ import Header from '@/components/layout/Header';
 import LiveCallBanner from '@/components/chat/LiveCallBanner';
 import FilterTabs from '@/components/ui/FilterTabs';
 import ChatList from '@/components/chat/ChatList';
+import Sidebar from '@/components/layout/Sidebar';
 import { Plus } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 
 export default function Home() {
   const [showPrompt, setShowPrompt] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [newChatName, setNewChatName] = useState('');
+  const [userProfile, setUserProfile] = useState({
+    name: 'YABBAA YABBOOK',
+    username: '@YabbaaToken',
+    avatar_url: 'https://i.pravatar.cc/150?u=myprofile'
+  });
 
   const createNewChat = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,13 +25,20 @@ export default function Home() {
       await supabase.from('chats').insert([{ name: newChatName.trim() }]);
       setShowPrompt(false);
       setNewChatName('');
-      // ChatList will refresh automatically due to the real-time subscription
     }
   };
 
   return (
     <div className="flex-1 flex flex-col relative overflow-hidden">
-      <Header onAddPress={() => setShowPrompt(true)} />
+      <Sidebar 
+        isOpen={isSidebarOpen} 
+        onClose={() => setIsSidebarOpen(false)} 
+        userProfile={userProfile}
+      />
+      <Header 
+        onAddPress={() => setShowPrompt(true)} 
+        onMenuPress={() => setIsSidebarOpen(true)}
+      />
       <main className="flex-1 overflow-y-auto no-scrollbar pb-10">
         <LiveCallBanner />
         <FilterTabs />
