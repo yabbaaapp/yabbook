@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "Yabbook",
+    "slug": "yabbook",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "scheme": "yabbook",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#7B6CB5"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yabbook.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "QR kod taraması için kameraya erişim gereklidir.",
+        "NSFaceIDUsageDescription": "Güvenli giriş için Face ID kullanılacaktır."
+      }
+    },
+    "android": {
+      "package": "com.yabbook.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#7B6CB5",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-dev-client",
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "QR kod taraması için kameraya erişim izni gereklidir."
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Güvenli giriş için Face ID kullanılacaktır."
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "cli": {
+    "version": ">= 0.55.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "simulator": true
+      }
+    }
+  }
+}
