@@ -10,8 +10,8 @@
 - [x] Migrate `(tabs)/profile.tsx` to Next.js user profile page
 - [x] Ensure Tailwind CSS styling matches Yabbook's dark theme
 
-## Phase 3: Telegram-style UI (Current)
-- [ ] Implement Side Drawer (Hamburger Menu) with Profile/Wallet links
-- [ ] Refactor Profile page to match Telegram's detailed info layout
-- [ ] Update Wallet settings UI to match the list-based style in screenshots
-- [ ] Ensure consistent dark mode aesthetics and premium micro-interactions
+## Phase 3: Telegram-style UI (Completed)
+- [x] Implement Side Drawer (Hamburger Menu) with Profile/Wallet links
+- [x] Refactor Profile page to match Telegram's detailed info layout
+- [x] Update Wallet settings UI to match the list-based style in screenshots
+- [x] Ensure consistent dark mode aesthetics and premium micro-interactions

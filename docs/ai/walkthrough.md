@@ -22,6 +22,16 @@ Telegram stilini yansıtan kapsamlı arayüz güncellemeleri tamamlandı! 🚀
 2. **Profil:** Yan menüden veya alt bardan Profile gidin, yeni "Info" kartlarını ve tab yapısını kontrol edin.
 3. **Cüzdan:** Alt bardaki cüzdan ikonuna basarak yeni liste görünümünü inceleyin.
 
+## Görsel Kanıtlar
+
+````carousel
+![Ana Sayfa & Yan Menü](C:/Users/murat/.gemini/antigravity/brain/20286365-b9fb-4c69-a773-755f666236e9/home_page_telegram_ui_1774046911993.png)
+<!-- slide -->
+![Yeni Profil Sayfası](C:/Users/murat/.gemini/antigravity/brain/20286365-b9fb-4c69-a773-755f666236e9/profile_page_final_1774046982264.png)
+<!-- slide -->
+![Cüzdan Görünümü](C:/Users/murat/.gemini/antigravity/brain/20286365-b9fb-4c69-a773-755f666236e9/wallet_receive_page_final_1774046960611.png)
+````
+
 ## Teknik Detaylar
 - Tüm ikonlar `lucide-react` ve `FontAwesome` kullanılarak Telegram'dakine en yakın şekilde seçildi.
 - Renk paleti Telegram'ın koyu modundaki (`#17212B`, `#0B0F19`) tonlara sabitlendi.
